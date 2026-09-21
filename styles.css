@@ -146,6 +146,30 @@ body {
 }
 .site-nav a:hover { color: var(--text); background: var(--bg-sunken); }
 
+/* The language switcher: a segmented control at the end of the navigation,
+   carried over from the course sites so the two chromes match. The full name
+   is what a reader looking for their language scans for, so it is the label
+   on a wide header; the code alone carries it once the header runs out of
+   room. */
+.lang-switch {
+  display: flex; align-items: center; margin-left: .5rem;
+  border: 1px solid var(--rule); border-radius: 7px; overflow: hidden;
+}
+.site-nav .lang-switch a {
+  display: flex; align-items: baseline; gap: .3rem;
+  padding: .32rem .55rem; border-radius: 0; font-size: .8rem; font-weight: 550;
+  color: var(--text-faint); letter-spacing: .01em;
+}
+.site-nav .lang-switch a + a { border-left: 1px solid var(--rule); }
+.site-nav .lang-switch a:hover { color: var(--text); background: var(--bg-sunken); }
+.site-nav .lang-switch a[aria-current="true"] {
+  color: var(--accent-text); background: var(--bg-sunken); cursor: default;
+}
+.lang-switch .lang-full { font-weight: 500; }
+@media (max-width: 62rem) {
+  .lang-switch .lang-full { display: none; }
+}
+
 .theme-toggle {
   background: none; border: 1px solid var(--rule); color: var(--text-muted);
   width: 2rem; height: 2rem; border-radius: 7px; cursor: pointer;
@@ -215,8 +239,10 @@ a.course-card:hover { border-color: var(--card-accent); transform: translateY(-1
      page this short, so the phone header is the title and the toggle. */
   .brand { white-space: nowrap; }
   .brand span { display: none; }
-  .site-nav a { display: none; }
-  .theme-toggle { flex: 0 0 auto; margin-left: 0; }
+  .site-nav > a { display: none; }
+  .lang-switch { margin-left: 0; }
+  .site-nav .lang-switch a { padding: .3rem .45rem; font-size: .78rem; }
+  .theme-toggle { flex: 0 0 auto; }
   .hero { padding: 2.25rem 0 1.75rem; }
   .hero .meta { gap: 1.1rem; }
   .course-card { grid-template-columns: 2.25rem 1fr auto; gap: .85rem; padding: .9rem 1rem; }
