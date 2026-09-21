@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 500" width="1800" height="500" fill="#000" stroke="#000" stroke-linecap="round" stroke-linejoin="round" font-family="Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, 'DejaVu Serif', serif">
+<!-- The page-top blackboard of the hub. Used as a CSS mask (black = ink), so its colour comes from the theme. Unlike a course's board, which quotes its own lectures, this one takes one line from each course on the shelf, the planned ones included: linear algebra, mechanics, symmetries, integrability, quantum mechanics, field theory, quantum computing. Conventions follow each course's own notes. In particular, the RTT relation is in the frozen order of integrability's notation bible (notes/notation-bible.md S1, eq:8:RTT). -->
+<g stroke="none">
+<!-- left: linear algebra, then mechanics -->
+<text x="40" y="70" font-size="38" font-style="italic" transform="rotate(-2 40 70)">Av = λv</text>
+<text x="52" y="116" font-size="22" font-style="italic" transform="rotate(-1 52 116)">dim V = dim ker T + dim im T</text>
+<text x="40" y="172" font-size="26" font-style="italic" transform="rotate(1 40 172)">A = A<tspan baseline-shift="super" font-size="0.62em">†</tspan>  ⇒  λ ∈ ℝ</text>
+<text x="40" y="240" font-size="28" font-style="italic" transform="rotate(-1 40 240)">d/dt (∂L/∂q̇) = ∂L/∂q</text>
+<text x="52" y="296" font-size="22" font-style="italic" transform="rotate(1 52 296)">ω = Σ dq<tspan baseline-shift="sub" font-size="0.7em">i</tspan> ∧ dp<tspan baseline-shift="sub" font-size="0.7em">i</tspan> ,   df/dt = {f, H}</text>
+<text x="40" y="356" font-size="26" font-style="italic" transform="rotate(-1 40 356)">[J<tspan baseline-shift="sub" font-size="0.7em">a</tspan>, J<tspan baseline-shift="sub" font-size="0.7em">b</tspan>] = i ε<tspan baseline-shift="sub" font-size="0.7em">abc</tspan> J<tspan baseline-shift="sub" font-size="0.7em">c</tspan></text>
+<text x="52" y="410" font-size="22" font-style="italic" transform="rotate(1 52 410)">G / ker φ ≅ im φ</text>
+<text x="40" y="462" font-size="22" font-style="italic" transform="rotate(-1 40 462)">|ψ⟩ = α|0⟩ + β|1⟩ ,   |α|<tspan baseline-shift="super" font-size="0.62em">2</tspan> + |β|<tspan baseline-shift="super" font-size="0.62em">2</tspan> = 1</text>
+<!-- middle: the labels of the two figures -->
+<text x="800" y="46" font-size="22" font-style="italic" text-anchor="start">s</text>
+<text x="932" y="186" font-size="22" font-style="italic" text-anchor="start">r : 2π/3</text>
+<text x="946" y="330" font-size="22" font-style="italic" text-anchor="middle">q</text>
+<text x="800" y="258" font-size="22" font-style="italic" text-anchor="middle">p</text>
+<!-- right: symmetries, integrability, and the courses still to come -->
+<text x="1080" y="72" font-size="30" font-style="italic" transform="rotate(-1 1080 72)">SU(2) / {±1} ≅ SO(3)</text>
+<text x="1092" y="124" font-size="24" font-style="italic" transform="rotate(1 1092 124)">½ ⊗ ½ = 0 ⊕ 1</text>
+<text x="1080" y="184" font-size="26" font-style="italic" transform="rotate(-1 1080 184)">L̇ = [M, L],    tr L<tspan baseline-shift="super" font-size="0.62em">k</tspan> conserved</text>
+<text x="1092" y="240" font-size="22" font-style="italic" transform="rotate(1 1092 240)">{L<tspan baseline-shift="sub" font-size="0.7em">1</tspan>, L<tspan baseline-shift="sub" font-size="0.7em">2</tspan>} = [r<tspan baseline-shift="sub" font-size="0.7em">12</tspan>, L<tspan baseline-shift="sub" font-size="0.7em">1</tspan>] − [r<tspan baseline-shift="sub" font-size="0.7em">21</tspan>, L<tspan baseline-shift="sub" font-size="0.7em">2</tspan>]</text>
+<text x="1080" y="300" font-size="20" font-style="italic" transform="rotate(-1 1080 300)">R<tspan baseline-shift="sub" font-size="0.7em">12</tspan>(λ−μ) T<tspan baseline-shift="sub" font-size="0.7em">2</tspan>(μ) T<tspan baseline-shift="sub" font-size="0.7em">1</tspan>(λ) = T<tspan baseline-shift="sub" font-size="0.7em">1</tspan>(λ) T<tspan baseline-shift="sub" font-size="0.7em">2</tspan>(μ) R<tspan baseline-shift="sub" font-size="0.7em">12</tspan>(λ−μ)</text>
+<text x="1092" y="362" font-size="26" font-style="italic" transform="rotate(1 1092 362)">iħ ∂<tspan baseline-shift="sub" font-size="0.7em">t</tspan> ψ = Ĥ ψ</text>
+<text x="1080" y="420" font-size="24" font-style="italic" transform="rotate(-1 1080 420)">S[φ] = ∫ d<tspan baseline-shift="super" font-size="0.62em">4</tspan>x  ℒ(φ, ∂<tspan baseline-shift="sub" font-size="0.7em">μ</tspan>φ)</text>
+<text x="1092" y="466" font-size="22" font-style="italic" transform="rotate(1 1092 466)">∂<tspan baseline-shift="sub" font-size="0.7em">μ</tspan> (∂ℒ/∂(∂<tspan baseline-shift="sub" font-size="0.7em">μ</tspan>φ)) = ∂ℒ/∂φ</text>
+</g>
+<g fill="none">
+<!-- the equilateral triangle, its mirror and its three-fold rotation: the first symmetry group of the Symmetries course -->
+<path d="M790 58 L710.3 196 L869.7 196 Z" stroke-width="3"/>
+<path d="M790 28 L790 236" stroke-width="2" stroke-dasharray="8 7"/>
+<path d="M908.4 193.1 A126 126 0 0 0 886.5 69.0" stroke-width="2.5"/>
+<path d="M890.2 84.2 L886.5 69.0 L900.9 75.2" stroke-width="2.5"/>
+<!-- a pendulum's phase portrait: librations inside, the separatrix, the rotations outside -->
+<path d="M650 400 L950 400 M800 290 L800 480" stroke-width="1.6"/>
+<ellipse cx="800" cy="400" rx="46" ry="26" stroke-width="2.2"/>
+<ellipse cx="800" cy="400" rx="84" ry="48" stroke-width="2.2"/>
+<path d="M680 400 C 726 324, 874 324, 920 400 C 874 476, 726 476, 680 400 Z" stroke-width="2.6"/>
+<path d="M666 336 C 742 302, 858 302, 934 336 M666 464 C 742 498, 858 498, 934 464" stroke-width="2" stroke-dasharray="8 7"/>
+</g>
+</svg>

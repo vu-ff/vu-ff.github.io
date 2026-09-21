@@ -1,0 +1,228 @@
+/* =====================================================================
+   Mathematical Physics — the hub's design system.
+
+   Lifted from the three course platforms (integrability/platform/src/
+   styles/global.css and its two siblings, 2026-09-21) and cut down to what
+   one page needs: the tokens, the header, the blackboard, one card and the
+   footer. Nothing about lecture notes, KaTeX or search is carried over.
+
+   The courses each wear their own accent — burgundy #78003f for Linear
+   Algebra and Symmetries, indigo #2e3a87 for Integrability. The hub wears
+   none of them: it is slate on the siblings' cool greys, and each card
+   carries its course's colour as its own mark and hover. The shelf should
+   not compete with the books on it.
+   ===================================================================== */
+
+:root {
+  /* The hub's own accent: a slate that belongs to no course. */
+  --slate:      #40485e;
+  --slate-dark: #2b3142;
+
+  /* Per-course accents, verbatim from each course's lecturestyle.sty. */
+  --c-linalg:        #78003f;
+  --c-symmetries:    #78003f;
+  --c-integrability: #2e3a87;
+
+  /* Light theme — the cool neutral scale of the integrability site. */
+  --bg:          #fcfcfd;
+  --bg-raised:   #ffffff;
+  --bg-sunken:   #f4f5f8;
+  --text:        #1b1d24;
+  --text-muted:  #5d6170;
+  --text-faint:  #8e92a0;
+  --rule:        #e5e7ee;
+  --rule-strong: #cfd3de;
+  --accent:      var(--slate);
+  --accent-text: var(--slate);
+  --heading:     #22252e;
+
+  /* The printed notes are set in XCharter, an extended Charter. */
+  --font-prose: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --font-ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif;
+
+  --measure: 52rem;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgb(20 24 50 / 0.04), 0 4px 16px rgb(20 24 50 / 0.05);
+}
+
+/* Dark theme. Burgundy and indigo are both far too dark to carry a mark on
+   dark ground, so each is lifted to the tint its own course's dark theme
+   already uses, rather than reused. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #121318;
+    --bg-raised:   #1a1b22;
+    --bg-sunken:   #0e0f13;
+    --text:        #dfe1ea;
+    --text-muted:  #a3a7b6;
+    --text-faint:  #737888;
+    --rule:        #272a33;
+    --rule-strong: #3a3e4a;
+    --accent:      #9aa3ba;
+    --accent-text: #aeb6c9;
+    --heading:     #e6e8f0;
+    --c-linalg:        #d888a8;
+    --c-symmetries:    #d888a8;
+    --c-integrability: #8e9ae0;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.35), 0 4px 16px rgb(0 0 0 / 0.28);
+  }
+}
+:root[data-theme="dark"] {
+  --bg:          #121318;  --bg-raised: #1a1b22;  --bg-sunken: #0e0f13;
+  --text:        #dfe1ea;  --text-muted: #a3a7b6; --text-faint: #737888;
+  --rule:        #272a33;  --rule-strong: #3a3e4a;
+  --accent:      #9aa3ba;  --accent-text: #aeb6c9; --heading: #e6e8f0;
+  --c-linalg:        #d888a8;
+  --c-symmetries:    #d888a8;
+  --c-integrability: #8e9ae0;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.35), 0 4px 16px rgb(0 0 0 / 0.28);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  isolation: isolate;
+}
+
+/* ---------- the blackboard ----------
+   A faint board of formulas from across the collection behind the top of
+   the page. The SVG is a MASK and the ink is a theme colour, so it follows
+   light and dark without a second drawing. It fades downward, and fades
+   again as the reader scrolls (the listener in index.html). */
+.board {
+  position: absolute; top: 0; left: 0; right: 0; height: 500px;
+  z-index: -1; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 30%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 0%, #000 30%, transparent 100%);
+}
+.board-ink {
+  position: absolute; inset: 0;
+  background: var(--board-ink); opacity: var(--board-opacity);
+  -webkit-mask: url("blackboard.svg") top center / 1800px 500px repeat-x;
+          mask: url("blackboard.svg") top center / 1800px 500px repeat-x;
+}
+:root { --board-ink: var(--heading); --board-opacity: .075; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --board-opacity: .07; }
+}
+:root[data-theme="dark"] { --board-opacity: .07; }
+@media (max-width: 40rem) {
+  .board { height: 340px; }
+  .board-ink { -webkit-mask-size: 1224px 340px; mask-size: 1224px 340px; }
+}
+@media print { .board { display: none; } }
+
+/* ---------- layout ---------- */
+.wrap { width: min(100% - 2.5rem, 80rem); margin-inline: auto; }
+
+/* ---------- header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(1.6) blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.site-header .bar { display: flex; align-items: center; gap: 1.25rem; height: 3.75rem; }
+.brand { font-weight: 650; letter-spacing: -0.015em; color: var(--heading); text-decoration: none; font-size: 1rem; }
+.brand span { color: var(--text-faint); font-weight: 450; }
+.site-nav { margin-left: auto; display: flex; align-items: center; gap: .25rem; }
+.site-nav a {
+  color: var(--text-muted); text-decoration: none; font-size: .875rem;
+  padding: .4rem .7rem; border-radius: 7px; font-weight: 500;
+}
+.site-nav a:hover { color: var(--text); background: var(--bg-sunken); }
+
+.theme-toggle {
+  background: none; border: 1px solid var(--rule); color: var(--text-muted);
+  width: 2rem; height: 2rem; border-radius: 7px; cursor: pointer;
+  display: grid; place-items: center; padding: 0; margin-left: .35rem;
+}
+.theme-toggle:hover { border-color: var(--rule-strong); color: var(--text); }
+
+/* ---------- headings and links ---------- */
+h1, h2, h3 { color: var(--heading); line-height: 1.25; letter-spacing: -0.02em; font-weight: 640; }
+h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 2.5rem); margin: 0 0 .5rem; }
+h2 { font-size: 1.4rem; margin: 2.75rem 0 .75rem; }
+h3 { font-size: 1.1rem; margin: 2rem 0 .5rem; }
+a { color: var(--accent-text); text-underline-offset: 2px; }
+
+/* ---------- hero ---------- */
+.hero { padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--rule); margin-bottom: 2.5rem; }
+.hero h1 { max-width: 20ch; }
+.hero .lede { font-size: 1.1rem; color: var(--text-muted); max-width: 56ch; margin: .75rem 0 0; }
+.hero .meta { display: flex; flex-wrap: wrap; gap: 1.75rem; margin-top: 2rem; }
+.hero .meta div { font-size: .85rem; color: var(--text-faint); }
+.hero .meta b { display: block; font-size: 1.5rem; color: var(--heading); font-weight: 620; letter-spacing: -.02em; }
+
+/* ---------- the shelf ---------- */
+.shelf { margin: 0 0 2.75rem; }
+.shelf-head { border-bottom: 1px solid var(--rule); padding-bottom: .6rem; margin-bottom: 1rem; }
+.shelf-head h2 { margin: 0; font-size: 1.15rem; }
+.shelf-head p { margin: .35rem 0 0; font-size: .9rem; color: var(--text-muted); max-width: 60ch; }
+
+.course-list { display: grid; gap: .6rem; padding: 0; margin: 0; list-style: none; }
+.course-card {
+  display: grid; grid-template-columns: 2.75rem 1fr auto; align-items: center; gap: 1.25rem;
+  padding: 1rem 1.25rem; border: 1px solid var(--rule); border-radius: var(--radius);
+  background: var(--bg-raised); text-decoration: none; color: inherit;
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+/* Each live card hovers in its own course's colour, which is the first
+   thing the reader will see of that course on the other side of the click. */
+a.course-card:hover { border-color: var(--card-accent); transform: translateY(-1px); box-shadow: var(--shadow); }
+.course-glyph { color: var(--card-accent); display: block; }
+.course-body h3 { margin: 0 0 .15rem; font-size: 1.05rem; font-weight: 620; }
+.course-body p { margin: 0; font-size: .875rem; color: var(--text-muted); max-width: 62ch; }
+.course-go { color: var(--text-faint); font-size: 1.1rem; }
+
+.course-card.is-planned { opacity: .62; background: transparent; --card-accent: var(--text-faint); }
+.course-card.is-planned .course-go {
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+}
+
+/* ---------- footer ---------- */
+.site-footer {
+  margin-top: 5rem; border-top: 1px solid var(--rule);
+  padding: 2rem 0 3rem; color: var(--text-faint); font-size: .85rem;
+}
+.site-footer p { margin: 0; max-width: var(--measure); }
+.site-footer a { color: var(--text-muted); }
+
+/* Keyboard users should not have to tab through the header first. */
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--bg); color: var(--accent-text);
+  padding: .6rem 1rem; border: 2px solid var(--accent); border-radius: 0 0 4px 0;
+}
+.skip-link:focus { left: 0; }
+
+@media (max-width: 40rem) {
+  /* The brand must stay on one line; the two section links are no use on a
+     page this short, so the phone header is the title and the toggle. */
+  .brand { white-space: nowrap; }
+  .brand span { display: none; }
+  .site-nav a { display: none; }
+  .theme-toggle { flex: 0 0 auto; margin-left: 0; }
+  .hero { padding: 2.25rem 0 1.75rem; }
+  .hero .meta { gap: 1.1rem; }
+  .course-card { grid-template-columns: 2.25rem 1fr auto; gap: .85rem; padding: .9rem 1rem; }
+  .course-body p { font-size: .84rem; }
+  /* A third column for "In preparation" would leave the description a
+     column of two words, so the status drops under the text instead. */
+  .course-card.is-planned { grid-template-columns: 2.25rem 1fr; }
+  .course-card.is-planned .course-go { grid-column: 2; margin-top: .35rem; }
+}

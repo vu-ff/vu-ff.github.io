@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mathematical Physics</title>
+<meta name="description" content="Lecture courses in mathematical physics: linear algebra, symmetries, and classical and quantum integrable systems, with more in preparation." />
+<link rel="icon" href="favicon.svg" />
+<link rel="stylesheet" href="styles.css" />
+<script>
+  // Applied before first paint, so the page never flashes the wrong theme.
+  (function () {
+    try {
+      var t = localStorage.getItem("mphys-theme");
+      if (t) document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<!-- The page-top blackboard: decoration only, so hidden from assistive
+     technology and from print. -->
+<div class="board" aria-hidden="true"><div class="board-ink"></div></div>
+<script>
+  // Fade the board out over the first 60% of a screen of scrolling.
+  (function () {
+    var board = document.querySelector(".board"), frame = 0;
+    if (!board) return;
+    function update() {
+      frame = 0;
+      board.style.opacity = String(Math.max(0, 1 - window.scrollY / (window.innerHeight * 0.6)));
+    }
+    window.addEventListener("scroll", function () {
+      if (!frame) frame = requestAnimationFrame(update);
+    }, { passive: true });
+    update();
+  })();
+</script>
+
+<a class="skip-link" href="#main">Skip to the courses</a>
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="./">Mathematical Physics <span>— lecture courses</span></a>
+    <nav class="site-nav">
+      <a href="#courses">Courses</a>
+      <a href="#planned">In preparation</a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch between light and dark">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <section class="hero">
+    <h1>Mathematical Physics</h1>
+    <p class="lede">
+      Lecture courses built from one set of notes: the mathematics is developed
+      in full, and each course is written to be read after the ones before it.
+      Notes, figures and exercise sheets are published as they are lectured.
+    </p>
+    <div class="meta">
+      <div><b>3</b> courses online</div>
+      <div><b>5</b> in preparation</div>
+    </div>
+  </section>
+
+  <section class="shelf" id="courses">
+    <header class="shelf-head">
+      <h2>Courses</h2>
+      <p>Each opens in a new tab, with its own notes, figures, exercise sheets and PDFs.</p>
+    </header>
+    <ul class="course-list">
+
+      <li><a class="course-card" style="--card-accent: var(--c-linalg)"
+             href="https://vu-ff.github.io/linalg/" target="_blank" rel="noopener">
+        <!-- two basis vectors from a shared origin: the first object the course defines -->
+        <svg class="course-glyph" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"
+             fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M8 24 L23 24" /><path d="M8 24 L15.5 9" />
+          <circle cx="8" cy="24" r="2.2" fill="currentColor" stroke="none" />
+        </svg>
+        <div class="course-body">
+          <h3>Linear Algebra for Physics</h3>
+          <p>Vector spaces, linear maps and their matrices, inner products, eigenvalues
+             and the spectral theorem — the algebra the later courses run on.</p>
+        </div>
+        <div class="course-go" aria-hidden="true">→</div>
+      </a></li>
+
+      <li><a class="course-card" style="--card-accent: var(--c-symmetries)"
+             href="https://vu-ff.github.io/symmetries/" target="_blank" rel="noopener">
+        <!-- the equilateral triangle and its centroid: the first symmetry group the course meets -->
+        <svg class="course-glyph" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"
+             fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 7 L24.5 23 L7.5 23 Z" />
+          <circle cx="16" cy="17.7" r="1.9" fill="currentColor" stroke="none" />
+        </svg>
+        <div class="course-body">
+          <h3>Symmetries in Physics</h3>
+          <p>Groups and their representations, characters and selection rules,
+             Lie algebras, <i>SU</i>(2) and angular momentum.</p>
+        </div>
+        <div class="course-go" aria-hidden="true">→</div>
+      </a></li>
+
+      <li><a class="course-card" style="--card-accent: var(--c-integrability)"
+             href="https://vu-ff.github.io/integrability/" target="_blank" rel="noopener">
+        <!-- two strands crossing: the braiding an R-matrix performs -->
+        <svg class="course-glyph" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"
+             fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M9 7 C 9 16, 23 16, 23 25" />
+          <path d="M23 7 C 23 12, 19.5 14.2, 17.6 15.2" />
+          <path d="M14.4 16.8 C 12.5 17.8, 9 20, 9 25" />
+        </svg>
+        <div class="course-body">
+          <h3>Classical and Quantum Integrable Systems</h3>
+          <p>Liouville integrability and action–angle variables, Lax pairs and
+             <i>r</i>-matrices, the Yang–Baxter equation and the algebraic Bethe ansatz.</p>
+        </div>
+        <div class="course-go" aria-hidden="true">→</div>
+      </a></li>
+
+    </ul>
+  </section>
+
+  <section class="shelf" id="planned">
+    <header class="shelf-head">
+      <h2>In preparation</h2>
+      <p>Written, or to be written, in the same form as the three above. They appear here as they open.</p>
+    </header>
+    <ul class="course-list">
+
+      <li><div class="course-card is-planned">
+        <!-- a pendulum: the system the whole course keeps returning to -->
+        <svg class="course-glyph" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"
+             fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M16 5 L21.8 19.2" />
+          <circle cx="16" cy="5" r="1.9" fill="currentColor" stroke="none" />
+          <circle cx="22.4" cy="20.8" r="3.4" fill="currentColor" stroke="none" />
+          <path d="M8.2 17.6 A 15.4 15.4 0 0 0 26.4 14.6" stroke-width="1.7" stroke-dasharray="2.2 3.2" />
+        </svg>
+        <div class="course-body">
+          <h3>Theoretical Mechanics</h3>
+          <p>Lagrangian and Hamiltonian mechanics, symmetry and conservation,
+             rigid bodies and small oscillations. Notes in draft.</p>
+        </div>
+        <div class="course-go">In preparation</div>
+      </div></li>
+
+      <li><div class="course-card is-planned">
+        <!-- two bound levels in a potential well -->
+        <svg class="course-glyph" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"
+             fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M6 5 C 8.5 20, 10.5 26, 16 26 C 21.5 26, 23.5 20, 26 5" />
+          <path d="M11.6 13 L20.4 13" stroke-width="1.9" />
+          <path d="M9.3 21 L22.7 21" stroke-width="1.9" />
+        </svg>
+        <div class="course-body">
+          <h3>Quantum Mechanics</h3>
+          <p>States, observables and dynamics on the linear algebra of the first course.</p>
+        </div>
+        <div class="course-go">Planned</div>
+      </div></li>
+
+      <li><div class="course-card is-planned">
+        <!-- a field: a wave spreading over a sheet -->
+        <svg class="course-glyph" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"
+             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 11 C 9 5, 14 17, 19 11 C 24 5, 27 11, 28 13" />
+          <path d="M4 18 C 9 12, 14 24, 19 18 C 24 12, 27 18, 28 20" />
+          <path d="M4 25 C 9 19, 14 31, 19 25 C 24 19, 27 25, 28 27" />
+        </svg>
+        <div class="course-body">
+          <h3>Classical Field Theory</h3>
+          <p>Fields, the action principle, Noether's theorem and relativistic invariance.</p>
+        </div>
+        <div class="course-go">Planned</div>
+      </div></li>
+
+      <li><div class="course-card is-planned">
+        <!-- a vertex: two legs in, one wavy propagator out -->
+        <svg class="course-glyph" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"
+             fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M4 6 L13 16" /><path d="M4 26 L13 16" />
+          <path d="M13 16 C 15.5 11.5, 18.5 20.5, 21 16 C 23.5 11.5, 26.5 20.5, 29 16" stroke-width="1.9" />
+          <circle cx="13" cy="16" r="2.1" fill="currentColor" stroke="none" />
+        </svg>
+        <div class="course-body">
+          <h3>Quantum Field Theory</h3>
+          <p>Quantised fields, particles as their excitations, and perturbation theory.</p>
+        </div>
+        <div class="course-go">Planned</div>
+      </div></li>
+
+      <li><div class="course-card is-planned">
+        <!-- a controlled gate on two wires -->
+        <svg class="course-glyph" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"
+             fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M4 10 L28 10" stroke-width="1.8" /><path d="M4 23 L28 23" stroke-width="1.8" />
+          <path d="M16 10 L16 23" stroke-width="1.8" />
+          <circle cx="16" cy="10" r="2.4" fill="currentColor" stroke="none" />
+          <circle cx="16" cy="23" r="3.6" />
+        </svg>
+        <div class="course-body">
+          <h3>Quantum Computing</h3>
+          <p>Qubits, circuits and the algorithms that make the difference visible.</p>
+        </div>
+        <div class="course-go">Planned</div>
+      </div></li>
+
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>
+      Mathematical Physics — lecture courses by Vidas Regelskis.
+      Worked solutions are done in the tutorials and are not published here.
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.querySelector("[data-theme-toggle]")?.addEventListener("click", function () {
+    var root = document.documentElement;
+    var current = root.getAttribute("data-theme");
+    if (!current) {
+      current = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = current === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("mphys-theme", next); } catch (e) {}
+  });
+</script>
+
+</body>
+</html>
