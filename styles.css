@@ -22,6 +22,7 @@
   --c-linalg:        #78003f;
   --c-symmetries:    #78003f;
   --c-integrability: #2e3a87;
+  --c-mechanics:     #0e5a5a;
 
   /* Light theme — the cool neutral scale of the integrability site. */
   --bg:          #fcfcfd;
@@ -64,6 +65,7 @@
     --c-linalg:        #d888a8;
     --c-symmetries:    #d888a8;
     --c-integrability: #8e9ae0;
+    --c-mechanics:     #5fbfb8;
     --shadow: 0 1px 2px rgb(0 0 0 / 0.35), 0 4px 16px rgb(0 0 0 / 0.28);
   }
 }
@@ -75,6 +77,7 @@
   --c-linalg:        #d888a8;
   --c-symmetries:    #d888a8;
   --c-integrability: #8e9ae0;
+  --c-mechanics:     #5fbfb8;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.35), 0 4px 16px rgb(0 0 0 / 0.28);
 }
 
